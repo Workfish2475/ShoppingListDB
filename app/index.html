@@ -2,12 +2,38 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<script defer src="clientApp.js"></script>
+	<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Shopping List</title>
 </head>
 <body>
 
-<section id="title">Shopping List</section>
+<section class="titleCard">
+	<section id="title">
+		Shopping List
+	</section>
+</section>
+
+<section class="contentArea">
+	<div class="section" id="Grocery">
+		<h2>Food</h2>
+		<section id="groceryItems">
+			<li>
+				Food item
+			</li>
+		</section>
+	</div>
+	<div class="section" id="Personal">
+		<h2>Shopping</h2>
+		<section id="personalItems">
+			<li>
+				test
+			</li>
+		</section>
+	</div>
+</section>
 	
 </body>
 </html>

@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body {
+	font-family: "Nunito", sans-serif;
+  	font-optical-sizing: auto;
+	  background: linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%);
+}
+
+.titleCard {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	color: white;
+    font-size: xxx-large;
+    border-radius: 5px;
+}
+
+.contentArea {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; /* This adds space between your grid items */
+}
+
+.section > h2 {
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+}
+
+#groceryItems, #personalItems {
+    margin: 10px;
+    padding: 20px;
+    text-align: left; 
+    border-radius: 5px;
+	background-color: #f8f8f8;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 8px;
+}
+
+#groceryItems li, #personalItems li { 
+    padding: 10px;
+	list-style: square;
+	margin-bottom: 8px; 
+    border-radius: 3px;
+	background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
+}
