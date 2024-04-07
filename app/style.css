@@ -7,19 +7,20 @@ body {
 }
 
 .titleCard {
-    padding: 30px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 	color: white;
-    font-size: xxx-large;
+    font-size: x-large;
+    font-weight: bolder;
     border-radius: 5px;
 }
 
 .contentArea {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px; /* This adds space between your grid items */
+    grid-template-columns: 1fr;
+    gap: 5px;
 }
 
 .section > h2 {
@@ -31,8 +32,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 }
 
-#groceryItems, #personalItems {
-    margin: 10px;
+#groceryItems {
     padding: 20px;
     text-align: left; 
     border-radius: 5px;
@@ -40,11 +40,20 @@ body {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 8px;
 }
 
-#groceryItems li, #personalItems li { 
+#groceryItems li {
+    border: 1px red solid;
     padding: 10px;
-	list-style: square;
-	margin-bottom: 8px; 
-    border-radius: 3px;
+    list-style: none;
+    border-radius: 5px;
 	background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
+}
+
+#groceryAdd {
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    width: calc(100% - 20px); 
+    box-sizing: border-box; 
     box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
 }
