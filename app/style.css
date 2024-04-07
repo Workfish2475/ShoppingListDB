@@ -3,11 +3,11 @@
 body {
 	font-family: "Nunito", sans-serif;
   	font-optical-sizing: auto;
-	  background: linear-gradient(90deg, hsla(236, 100%, 8%, 1) 0%, hsla(211, 100%, 28%, 1) 100%);
+	background-color: #2A3439;
+    margin: 25px;
 }
 
 .titleCard {
-    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,28 +20,10 @@ body {
 .contentArea {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 5px;
-}
-
-.section > h2 {
-    margin: 10px;
-    padding: 20px;
-    text-align: center;
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
-}
-
-#groceryItems {
-    padding: 20px;
-    text-align: left; 
-    border-radius: 5px;
-	background-color: #f8f8f8;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 8px;
 }
 
 #groceryItems li {
-    border: 1px red solid;
+    margin: 10px;
     padding: 10px;
     list-style: none;
     border-radius: 5px;

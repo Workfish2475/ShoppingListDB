@@ -20,13 +20,14 @@ function renderList(items) {
         quantityDiv.textContent = `Quantity: ${item.quantity}`;
         
         const itemDiv = document.createElement('div');
-        itemDiv.textContent = `Item: ${item.item}`;
+        itemDiv.innerHTML = `<strong>${item.item}</strong>`;
+
         
         const storeDiv = document.createElement('div');
         storeDiv.textContent = `Store: ${item.store}`;
 
-        detailsContainer.appendChild(quantityDiv);
         detailsContainer.appendChild(itemDiv);
+        detailsContainer.appendChild(quantityDiv);
         detailsContainer.appendChild(storeDiv);
     
         listItem.appendChild(checkbox);
@@ -63,17 +64,34 @@ function addInput() {
         return input;
     };
 
-    const quantityInput = createStyledInput('Enter quantity');
-    const itemInput = createStyledInput('Enter item name');
-    const storeInput = createStyledInput('Enter store name');
+    const submitButton = document.createElement('button');
+    submitButton.textContent = 'Add';
+    submitButton.addEventListener('click', () => {
+        const quantity = quantityInput.value;
+        const itemName = itemInput.value;
+        const storeName = storeInput.value;
+
+        const item = {
+            item: itemName,
+            quantity: quantity,
+            store: storeName
+        };
+
+        addGroceryItem(item);
+    });
+
+    const quantityInput = createStyledInput('Quantity...');
+    const itemInput = createStyledInput('Item...');
+    const storeInput = createStyledInput('Store...');
     storeInput.style.marginBottom = '0';
 
-    detailsContainer.appendChild(quantityInput);
     detailsContainer.appendChild(itemInput);
+    detailsContainer.appendChild(quantityInput);
     detailsContainer.appendChild(storeInput);
 
     listItem.appendChild(checkbox);
     listItem.appendChild(detailsContainer);
+    listItem.appendChild(submitButton);
 
     list.appendChild(listItem);
 }
@@ -84,6 +102,13 @@ function addListeners(){
         addInput();
     });
 }
+
+function addGroceryItem(groceryItem){
+    console.log('Reached addGroceryItem function (client side)');
+    socket.emit('addGroceryItem', groceryItem);
+    location.reload();
+}
+
 
 socket.on('connect', () => {
     console.log('A client has connected to the server');
