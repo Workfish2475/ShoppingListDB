@@ -8,10 +8,6 @@ function renderList(items) {
         listItem.style.display = 'flex'; 
         listItem.style.alignItems = 'center'; 
         listItem.style.padding = '10px';
-        
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.style.marginRight = '10px';
 
         const detailsContainer = document.createElement('div');
         detailsContainer.style.flexGrow = '1'; 
@@ -22,9 +18,16 @@ function renderList(items) {
         const itemDiv = document.createElement('div');
         itemDiv.innerHTML = `<strong>${item.item}</strong>`;
 
-        
         const storeDiv = document.createElement('div');
         storeDiv.textContent = `Store: ${item.store}`;
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.style.marginRight = '10px';
+
+        checkbox.addEventListener('click', () => {
+            deleteGroceryItem(item.item);
+        });
 
         detailsContainer.appendChild(itemDiv);
         detailsContainer.appendChild(quantityDiv);
@@ -109,6 +112,11 @@ function addGroceryItem(groceryItem){
     location.reload();
 }
 
+function deleteGroceryItem(groceryItem){
+    console.log('Reached deleteGroceryItem function (client side)');
+    socket.emit('deleteGroceryItem', groceryItem);
+    location.reload();
+}
 
 socket.on('connect', () => {
     console.log('A client has connected to the server');
