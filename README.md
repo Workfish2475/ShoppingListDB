@@ -1,2 +1,3 @@
 # ShoppingListDB
-RESTful API and Database Application assignment for CS-382
+
+Version fo assingmen that makes use of socket.io instead of required frameworks.
