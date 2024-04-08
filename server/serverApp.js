@@ -4,6 +4,7 @@ const io = require('socket.io')(http, {
 	cors: {origin: '*'}
 });
 
+const { error } = require('console');
 const mongoose = require('mongoose');
 
 const grocerySchema = new mongoose.Schema({
@@ -27,7 +28,6 @@ io.on('connection', (socket) => {
 	const sendGroceryItems = async () => {
         try {
             const items = await groceryModel.find({});
-            console.log(items);
             socket.emit('groceryItems', items);
         } catch (err) {
             console.log('Error fetching grocery items:', err);
@@ -48,6 +48,19 @@ io.on('connection', (socket) => {
 				console.log('Error adding grocery item:', err);
 				socket.emit('errorAddingGroceryItem', err.message);
 			});
+	});
+
+	socket.on('deleteGroceryItem', async (targetItem) => {
+		try{
+			const deletedItem = await groceryModel.findOneAndDelete({item:targetItem});
+			if (!deletedItem) {
+				throw new Error('Item not found');
+			}
+			console.log('Grocery item deleted: ', deletedItem);
+			sendGroceryItems();
+		} catch (err) {
+			console.log('Error deleting grocery item: ', err.message);
+		}
 	});
 });
 
