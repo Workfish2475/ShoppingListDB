@@ -18,6 +18,11 @@ function renderList(items) {
         const itemDiv = document.createElement('div');
         itemDiv.innerHTML = `<strong>${item.item}</strong>`;
 
+        const dateDiv = document.createElement('div');
+        let dateTemp = new Date(item.dateRO);
+        let dateForm = dateTemp.toDateString('en-us');
+        dateDiv.innerHTML =  `When: ${dateForm}`;
+
         const storeDiv = document.createElement('div');
         storeDiv.textContent = `Store: ${item.store}`;
 
@@ -28,9 +33,10 @@ function renderList(items) {
         checkbox.addEventListener('click', () => {
             deleteGroceryItem(item.item);
         });
-
+ 
         detailsContainer.appendChild(itemDiv);
         detailsContainer.appendChild(quantityDiv);
+        detailsContainer.appendChild(dateDiv);
         detailsContainer.appendChild(storeDiv);
     
         listItem.appendChild(checkbox);
@@ -67,16 +73,36 @@ function addInput() {
         return input;
     };
 
+    const dateInput = document.createElement('input');
+    dateInput.id = 'dateShit';
+    dateInput.type = 'date';
+    dateInput.style.border = 'none';
+    dateInput.style.outline = 'none';
+    dateInput.style.backgroundColor = 'transparent';
+
+    dateInput.addEventListener('change', () => {
+        const testing = document.getElementById('dateShit');
+        dateInput.value = testing.value;
+    });
+
     const submitButton = document.createElement('button');
     submitButton.textContent = 'Add';
     submitButton.addEventListener('click', () => {
+
+        const dateTemp = new Date(dateInput.value + "T00:00-0800");
+
         const quantity = quantityInput.value;
         const itemName = itemInput.value;
         const storeName = storeInput.value;
+        const itemDate = dateTemp;
+
+        console.log(dateTemp);
+        console.log(itemDate);
 
         const item = {
             item: itemName,
             quantity: quantity,
+            dateRO: itemDate,
             store: storeName
         };
 
@@ -90,6 +116,7 @@ function addInput() {
 
     detailsContainer.appendChild(itemInput);
     detailsContainer.appendChild(quantityInput);
+    detailsContainer.appendChild(dateInput);
     detailsContainer.appendChild(storeInput);
 
     listItem.appendChild(checkbox);
